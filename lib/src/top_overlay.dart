@@ -1,62 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:top_alert_notification/src/top_banner_widget.dart';
 
-void showTopAlert(BuildContext context, Widget child, {OverlayState? overlayState}) async {
-  overlayState ??= Overlay.of(context);
+/// This is the main class to contain the Overlay State and the Overlay Entry to allow manipulation of the overlay
+class TopAlertNotification {
+  TopAlertNotification(this.context, this.child,
+      {this.color = Colors.white, this.closeOnX = true, this.onTap, this.duration = Duration.zero});
 
+  BuildContext context;
+  Widget child;
+  bool closeOnX;
+  Function? onTap;
+  Duration duration;
+  Color color;
+
+  OverlayState? overlayState;
   late OverlayEntry overlayEntry;
-  overlayEntry = OverlayEntry(
-    builder: (context) {
-      return Align(
-        alignment: Alignment.topCenter,
-        child: Container(
-          child: child,
-        ),
-      );
-    },
-  );
 
-  overlayState?.insert(overlayEntry);
+  void showTopAlert() async {
+    overlayState ??= Overlay.of(context);
 
-  // await Future.delayed(
-  //   Duration(seconds: 2),
-  // );
-
-  // overlayEntry.remove();
-}
-
-class TopAlertNotification extends StatefulWidget {
-  TopAlertNotification({Key? key, required this.child}) : super(key: key);
-
-  final Widget child;
-
-  @override
-  _TopAlertNotificationState createState() => _TopAlertNotificationState();
-}
-
-class _TopAlertNotificationState extends State<TopAlertNotification> {
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.fromLTRB(8, 100, 8, 0),
-        child: Card(
-          color: const Color(0xFFF79912),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(8.0),
+    overlayEntry = OverlayEntry(
+      builder: (context) {
+        return Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            child: TopBannerWidget(
+              overlayEntry,
+              color,
+              child,
+              onTap: onTap,
             ),
           ),
-          elevation: 1.0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: widget.child,
-              ),
-              IconButton(
-                onPressed: () => {},
-                icon: Icon(Icons.close),
-              ),
-            ],
-          ),
-        ),
+        );
+      },
+    );
+
+    overlayState?.insert(overlayEntry);
+
+    if (duration != Duration.zero) {
+      await Future.delayed(
+        duration,
       );
+
+      overlayEntry.remove();
+    }
+  }
 }
