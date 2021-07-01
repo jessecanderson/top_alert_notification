@@ -1,7 +1,7 @@
 name: top_alert_notification
-description: A new Flutter package project.
+description: Present a flexible overlay on the top part of a view.
 version: 0.0.1
-homepage:
+homepage: https://github.com/jessecanderson/top_alert_notification
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
