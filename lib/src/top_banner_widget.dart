@@ -7,16 +7,16 @@ class TopBannerWidget extends StatefulWidget {
     this.color,
     this.child, {
     Key? key,
-    this.closeOnX = true,
+    this.closeOnX,
     this.onTap,
   }) : super(key: key);
 
   final Widget child;
-  final bool closeOnX;
-  final Function? onTap;
+  final bool? closeOnX;
+  final VoidCallback? onTap;
   final Color color;
 
-  OverlayEntry overlayEntry;
+  final OverlayEntry overlayEntry;
 
   @override
   _TopBannerWidgetState createState() => _TopBannerWidgetState();
@@ -105,7 +105,7 @@ class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProv
                   child: widget.child,
                 ),
               ),
-              if (widget.closeOnX) rightIconButton(),
+              if (checkCloseOption()) rightIconButton(),
             ],
           ),
         ),
@@ -114,7 +114,20 @@ class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProv
   }
 
   void _runOnTap() {
-    widget.onTap;
+    var onTapFucntion = widget.onTap;
+
+    if (onTapFucntion != null) {
+      onTapFucntion();
+    }
+  }
+
+  bool checkCloseOption() {
+    bool? closeCheckOption = widget.closeOnX;
+
+    if (closeCheckOption != null) {
+      return closeCheckOption;
+    }
+    return false;
   }
 
   Widget rightIconButton() {
