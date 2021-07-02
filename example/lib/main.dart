@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:top_alert_notification/top_alert_notification.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeView extends StatelessWidget {
-  final String url = "https://docs.google.com/forms/d/1OTlXehum7L5ZKGFZ9yphOGmfs_OInIG90Ixsc_F30AE/edit";
+  final String url = "www.google.com";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,8 +65,8 @@ class HomeView extends StatelessWidget {
   }
 
   void printTest() async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    }
+    // if (await canLaunch(url)) {
+    //   await launch(url);
+    // }
   }
 }

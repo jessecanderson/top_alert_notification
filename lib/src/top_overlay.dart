@@ -47,9 +47,7 @@ class TopAlertNotification {
     }
   }
 
-  void dismissAlert() {
-    if (overlayEntry != null) {
-      overlayEntry.remove();
-    }
+  void dismissTopAlert() {
+    overlayEntry.remove();
   }
 }
