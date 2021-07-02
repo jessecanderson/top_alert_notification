@@ -102,7 +102,7 @@ class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProv
                     }
                   },
                   onTap: _runOnTap,
-                  child: widget.child,
+                  child: _buildContent(context),
                 ),
               ),
               if (checkCloseOption()) rightIconButton(),
@@ -113,12 +113,19 @@ class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProv
     );
   }
 
+  Widget _buildContent(BuildContext context) {
+    // Possibly add some more formatting here, but not 100% sure
+    return Container(child: widget.child);
+  }
+
   void _runOnTap() {
     var onTapFucntion = widget.onTap;
 
     if (onTapFucntion != null) {
       onTapFucntion();
     }
+
+    widget.overlayEntry.remove();
   }
 
   bool checkCloseOption() {
