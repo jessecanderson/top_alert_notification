@@ -8,4 +8,9 @@ Adding in onTap option
 Adding in Gesture Detector for swipe away dismiss and onTap support
 Adding animation to the bounce in
 Removing animation for dismissing
+Fixing size issues on alert
+Fixing onTap for main alert not detecting in emtpy areas
+Adding custom color options
+Adding dismiss method
+Updating tap to include dismiss of element
 
