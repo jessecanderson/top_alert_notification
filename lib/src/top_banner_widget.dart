@@ -41,8 +41,8 @@ class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProv
   void _animationSetup() async {
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
-      reverseDuration: Duration(seconds: 2),
+      duration: Duration(seconds: 1),
+      reverseDuration: Duration(seconds: 1),
     );
 
     Tween<Offset> offsetTween = Tween<Offset>(
@@ -88,12 +88,14 @@ class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProv
           ),
         ),
         elevation: 1.0,
-        child: IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 90,
+                width: MediaQuery.of(context).size.width,
                 child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
                   onVerticalDragUpdate: (details) {
                     int sensitivity = 8;
                     if (details.delta.dy < -sensitivity) {
@@ -102,20 +104,24 @@ class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProv
                     }
                   },
                   onTap: _runOnTap,
-                  child: _buildContent(context),
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: widget.child,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              if (checkCloseOption()) rightIconButton(),
-            ],
-          ),
+            ),
+            if (checkCloseOption()) rightIconButton(),
+          ],
         ),
       ),
     );
-  }
-
-  Widget _buildContent(BuildContext context) {
-    // Possibly add some more formatting here, but not 100% sure
-    return Container(child: widget.child);
   }
 
   void _runOnTap() {
