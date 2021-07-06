@@ -4,7 +4,10 @@ import 'package:top_alert_notification/src/top_banner_widget.dart';
 /// This is the main class to contain the Overlay State and the Overlay Entry to allow manipulation of the overlay
 class TopAlertNotification {
   TopAlertNotification(this.context, this.child,
-      {this.color = Colors.white, this.closeOnX, this.onTap, this.duration = Duration.zero});
+      {this.color = Colors.white,
+      this.closeOnX,
+      this.onTap,
+      this.duration = Duration.zero});
 
   BuildContext context;
   Widget child;

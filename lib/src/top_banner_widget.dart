@@ -22,7 +22,8 @@ class TopBannerWidget extends StatefulWidget {
   _TopBannerWidgetState createState() => _TopBannerWidgetState();
 }
 
-class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProviderStateMixin {
+class _TopBannerWidgetState extends State<TopBannerWidget>
+    with SingleTickerProviderStateMixin {
   late Animation offsetAnimation;
   late AnimationController animationController;
 
