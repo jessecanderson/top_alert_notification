@@ -1,6 +1,7 @@
 name: top_alert_notification
-description: Present a flexible overlay on the top part of a view.
-version: 0.0.1
+description: This package creates a top notification centered in the screen. When presented, you can pass in a child widget, a function for onTap, as well as enable a dismiss button. It also supports a swipe up to dimiss option.
+version: 0.0.2
+author: Jesse Anderson
 homepage: https://github.com/jessecanderson/top_alert_notification
 
 environment:
@@ -14,5 +15,5 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-    
+
 flutter:
