@@ -3,14 +3,19 @@ import 'package:top_alert_notification/src/top_banner_widget.dart';
 
 /// This is the main class to contain the Overlay State and the Overlay Entry to allow manipulation of the overlay
 class TopAlertNotification {
-  TopAlertNotification(this.context, this.child,
-      {this.color = Colors.white,
-      this.closeOnX,
-      this.onTap,
-      this.duration = Duration.zero});
+  TopAlertNotification(
+    this.context,
+    this.child, {
+    this.key,
+    this.color = Colors.white,
+    this.closeOnX,
+    this.onTap,
+    this.duration = Duration.zero,
+  });
 
   BuildContext context;
   Widget child;
+  String? key;
   bool? closeOnX;
   VoidCallback? onTap;
   Duration duration;
@@ -33,6 +38,7 @@ class TopAlertNotification {
               child,
               onTap: onTap,
               closeOnX: closeOnX,
+              customKey: key ?? "",
             ),
           ),
         );
@@ -51,6 +57,8 @@ class TopAlertNotification {
   }
 
   void dismissTopAlert() {
-    overlayEntry.remove();
+    if (overlayEntry != null) {
+      overlayEntry.remove();
+    }
   }
 }

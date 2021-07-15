@@ -7,6 +7,7 @@ class TopBannerWidget extends StatefulWidget {
     this.color,
     this.child, {
     Key? key,
+    this.customKey,
     this.closeOnX,
     this.onTap,
   }) : super(key: key);
@@ -15,6 +16,7 @@ class TopBannerWidget extends StatefulWidget {
   final bool? closeOnX;
   final VoidCallback? onTap;
   final Color color;
+  final String? customKey;
 
   final OverlayEntry overlayEntry;
 
@@ -22,8 +24,7 @@ class TopBannerWidget extends StatefulWidget {
   _TopBannerWidgetState createState() => _TopBannerWidgetState();
 }
 
-class _TopBannerWidgetState extends State<TopBannerWidget>
-    with SingleTickerProviderStateMixin {
+class _TopBannerWidgetState extends State<TopBannerWidget> with SingleTickerProviderStateMixin {
   late Animation offsetAnimation;
   late AnimationController animationController;
 
@@ -82,6 +83,7 @@ class _TopBannerWidgetState extends State<TopBannerWidget>
     return Padding(
       padding: const EdgeInsets.only(top: 100),
       child: Card(
+        key: Key(widget.customKey ?? ""),
         color: widget.color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(

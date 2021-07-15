@@ -1,7 +1,6 @@
 name: top_alert_notification
-description: This package creates a top notification centered in the screen. When presented, you can pass in a child widget, a function for onTap, as well as enable a dismiss button. It also supports a swipe up to dimiss option.
-version: 0.0.2
-author: Jesse Anderson
+description: Creates a top notification centered in the screen. Pass in a child widget, a function for onTap, and enable a dismiss button. Supports a swipe up to dismiss option.
+version: 0.0.4
 homepage: https://github.com/jessecanderson/top_alert_notification
 
 environment:
